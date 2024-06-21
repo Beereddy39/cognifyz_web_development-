@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Level1 Task2</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: black;
+            color: white;
+            border: none;
+        }
+
+        .Container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sum {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sum h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .sum p {
+            margin: 5px 0;
+        }
+
+        .sum button {
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 150px;
+            box-sizing: border-box;
+        }
+
+        .sum button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <button id="button">Change Button Color</button>
+    </div>
+    <script>
+        const button = document.getElementById('button');
+        let index = 0;
+        const colors = ['black', 'darkgreen', 'blue', 'violet', 'red'];
+
+        button.addEventListener('click', function onClick() {
+            button.style.backgroundColor = colors[index];
+            button.style.color = 'white';
+            index = index >= colors.length - 1 ? 0 : index + 1;
+        });
+    </script>
+    <hr>
+    <div class="Container">
+        <p>TEXT</p>
+    </div>
+    <script>
+        const greetingContainer = document.querySelector(".Container");
+        const timeNow = new Date().getHours();
+        let msg;
+    
+        if (timeNow >= 4 && timeNow < 12) {
+            msg = Good Morning ${timeNow};
+        } 
+        else if (timeNow >= 12 && timeNow < 17) {
+            msg = Good Afternoon ${timeNow};
+        } 
+        else {
+            msg = Good Evening ${timeNow};
+        }
+
+        greetingContainer.innerHTML = <h1>${msg}</h1>;
+    </script>
+    
+    <hr>
+    <div class="sum">
+        <h2>The Addition of Two Numbers:</h2>
+        <p>First Number: <input id="number1" type="number"></p>
+        <p>Second Number: <input id="number2" type="number"></p>
+        <button onclick="add()">Calculate Sum</button>
+        <p>Sum: <input id="result" readonly></p>
+    </div>
+    <script>
+        function add() {
+            const number1 = Number(document.getElementById("number1").value);
+            const number2 = Number(document.getElementById("number2").value);
+            const sum = (isNaN(number1) ? 0 : number1) + (isNaN(number2) ? 0 : number2);
+            
+            document.getElementById("result").value = sum;
+        }
+    </script>
+    
+</body>
+</html>
